@@ -20,7 +20,7 @@ public class StartPage extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(StartPage.this, MainActivity.class);
             StartPage.this.startActivity(intent);
-            StartPage.this.finish();;
+            StartPage.this.finish();
         }, 3000);
     }
 }
