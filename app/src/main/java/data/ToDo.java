@@ -4,7 +4,7 @@ import Interfaces.IToDo;
 
 public class ToDo extends IToDo {
 
-    public ToDo(Boolean completed, String todo){
+    public ToDo(boolean completed, String todo){
         this.completed = completed;
         this.todo = todo;
     }
@@ -21,10 +21,10 @@ public class ToDo extends IToDo {
         this.todo = todo;
     }
 
-    public void setCompleted(Boolean completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 
-    private String todo;
-    private Boolean completed;
+    public String todo;
+    public boolean completed;
 }
