@@ -6,16 +6,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#4E6AA6"
+        android:background="@drawable/listview_style"
         android:gravity="fill_horizontal"
-        android:layout_margin="20dp"
+        android:padding="10dp"
         android:orientation="vertical"
         android:weightSum="3">
 
         <CheckBox
             android:id="@+id/checkbox_task"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:buttonTint="#a8a8a8"/>
 
         <TextView
             android:id="@+id/task"
@@ -24,7 +25,8 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/checkbox_task"
             android:textAlignment="textEnd"
-            android:textSize="20sp" />
+            android:textColor="#a8a8a8"
+            android:textSize="25sp" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

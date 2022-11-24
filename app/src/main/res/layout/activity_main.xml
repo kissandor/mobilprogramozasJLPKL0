@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#1c3c80"
+    android:background="@color/main_background"
     tools:context=".MainActivity">
 
 
@@ -13,7 +13,10 @@
         android:id="@+id/listview_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#1c3c80"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/main_background"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/add_button_container">
@@ -22,48 +25,37 @@
             android:id="@+id/messages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1c3c80"
+            android:dividerHeight="10.0sp"
+            android:divider="@color/main_background"
             app:layout_constraintBottom_toBottomOf="parent" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/add_button_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1c3c80"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/input_container"
-        app:layout_constraintEnd_toEndOf="@+id/input_container">
-
-        <ImageButton
-            android:id="@+id/add_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_add_button_svgrepo_com"
-            android:textColor="#1c3c80"
-            app:layout_constraintBottom_toTopOf="parent" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/input_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:background="#4E6AA6"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+        android:layout_margin="10dp"
+        android:layout_gravity="bottom">
 
         <EditText
             android:id="@+id/quick_input"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.85"
             android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_gravity="bottom"
             android:hint="Add quick text here" />
 
-    </RelativeLayout>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/add_button"
+            android:layout_width="0dp"
+            android:layout_weight="0.15"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_add_button_svgrepo_com"
+            android:textColor="#4E6AA6"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toTopOf="parent"
+            />
+    </LinearLayout>
+</FrameLayout>
