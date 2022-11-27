@@ -24,12 +24,18 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<ToDo> todos;
     ImageButton add;
     EditText data;
+    SQLiteDatabaseHandler dbHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dbHandler = new SQLiteDatabaseHandler(this);
         todos = new ArrayList<>();
+        //get todos from the database
+        todos = dbHandler.getAllTodos();
+
 
         ToDoAdapter adaptr = new ToDoAdapter(getApplicationContext(), R.layout.list_item, todos);
         ListView listView = findViewById(R.id.messages);
@@ -41,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 data = findViewById(R.id.quick_input);
                 if (data.getText().length() > 0){
-                    addToDo(data, false, todos);
+                    addToDo(data, false);
+                    todos = dbHandler.getAllTodos();
                     adaptr.notifyDataSetChanged();
                 }
 
@@ -50,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method to add todos to the list
-    public void addToDo(EditText et, Boolean completed, ArrayList<ToDo> todos){
+    public void addToDo(EditText et, Boolean completed){
         ToDo newTodo = new ToDo(completed, et.getText().toString());
-        todos.add(newTodo);
+        dbHandler.addTodo(newTodo);
         et.setText("");
     }
 }
