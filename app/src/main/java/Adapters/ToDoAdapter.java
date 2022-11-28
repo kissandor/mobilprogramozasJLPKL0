@@ -51,10 +51,10 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
         }
 
         CheckBox cBox = convertView.findViewById(R.id.checkbox_task);
-        cBox.setChecked(todos.get(position).completed);
+        cBox.setChecked(todos.get(position).getCompleted());
 
         TextView tView = convertView.findViewById(R.id.task);
-        tView.setText(todos.get(position).todo);
+        tView.setText(todos.get(position).getTodo());
 
         return convertView;
     }

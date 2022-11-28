@@ -7,6 +7,7 @@ public class ToDo extends IToDo {
     public ToDo(boolean completed, String todo){
         this.completed = completed;
         this.todo = todo;
+        this.id = id;
     }
 
     public String getTodo() {
@@ -25,6 +26,7 @@ public class ToDo extends IToDo {
         this.completed = completed;
     }
 
-    public String todo;
-    public boolean completed;
+    private String todo;
+    private boolean completed;
+    public int id;
 }

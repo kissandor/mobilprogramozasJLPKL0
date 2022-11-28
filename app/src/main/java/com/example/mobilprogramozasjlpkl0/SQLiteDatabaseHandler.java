@@ -24,8 +24,8 @@ public class SQLiteDatabaseHandler {
 
         ContentValues values = new ContentValues();
 
-        values.put(ToDoContract.TodoEntry.COLUMN_NAME_TODO, todo.todo);
-        values.put(ToDoContract.TodoEntry.COLUMN_NAME_CHECKED, String.valueOf(todo.completed));
+        values.put(ToDoContract.TodoEntry.COLUMN_NAME_TODO, todo.getTodo());
+        values.put(ToDoContract.TodoEntry.COLUMN_NAME_CHECKED, String.valueOf(todo.getCompleted()));
 
         long id = db.insert(
                 ToDoContract.TodoEntry.TABLE_NAME, null, values);
@@ -46,37 +46,57 @@ public class SQLiteDatabaseHandler {
         };
 
         Cursor cursor = db.query(
-                ToDoContract.TodoEntry.TABLE_NAME,   // The table to query
-                columns,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
-                null,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                null              // The sort order
+                false,
+                ToDoContract.TodoEntry.TABLE_NAME,
+                null,
+                ToDoContract.TodoEntry.COLUMN_NAME_CHECKED+"='false'",
+                null,
+                null,
+                null,
+                null,
+                null
         );
 
-        ArrayList<ToDo> todos = new ArrayList<ToDo>();
+        ArrayList<ToDo> todos = new ArrayList<>();
+
+        while(cursor.moveToNext())
+        {
+            int index;
+            index = cursor.getColumnIndexOrThrow("_id");
+            long _id = cursor.getLong(index);
+
+            index = cursor.getColumnIndexOrThrow(
+                    ToDoContract.TodoEntry.COLUMN_NAME_TODO);
+            String todo = cursor.getString(index);
+
+            index = cursor.getColumnIndexOrThrow(
+                    ToDoContract.TodoEntry.COLUMN_NAME_CHECKED);
+            boolean checked = Boolean.getBoolean(cursor.getString(index));
+
+            ToDo td = new ToDo(checked, todo);
+            td.id = Math.toIntExact(_id);
+            todos.add(td);
+        }
+        /*
         while(cursor.moveToNext()) {
             int index;
             index = cursor.getColumnIndexOrThrow("_id");
             long _id = cursor.getLong(index);
 
             index = cursor.getColumnIndexOrThrow(
-                    ToDoContract.TodoEntry.TABLE_NAME);
+                    ToDoContract.TodoEntry.COLUMN_NAME_TODO);
             String todo = cursor.getString(index);
 
             index = cursor.getColumnIndexOrThrow(
                     ToDoContract.TodoEntry.COLUMN_NAME_CHECKED);
-            String checked = cursor.getString(index);
+            boolean checked = Boolean.getBoolean(cursor.getString(index));
 
-            ToDo td;
-            if(checked == "false"){
-                td = new ToDo(false, todo);
-            } else {
-                td = new ToDo(true, todo);
-            }
+            ToDo td = new ToDo(checked, todo);
+            td.id = Math.toIntExact(_id);
             todos.add(td);
         }
+        */
+
         cursor.close();
         return todos;
     }
