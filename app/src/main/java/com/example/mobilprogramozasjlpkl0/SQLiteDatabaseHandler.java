@@ -1,9 +1,12 @@
 package com.example.mobilprogramozasjlpkl0;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -86,16 +89,17 @@ public class SQLiteDatabaseHandler {
         String newValue = "csere";
         String newChecked = "true";
         ContentValues values = new ContentValues();
-        values.put(ToDoContract.TodoEntry._ID, todo.id);
+        //values.put(ToDoContract.TodoEntry._ID, todo.id);
         values.put(ToDoContract.TodoEntry.COLUMN_NAME_TODO, newValue);
         values.put(ToDoContract.TodoEntry.COLUMN_NAME_CHECKED, newChecked);
 
 
-        int update = db.update(
+        db.update(
                 ToDoContract.TodoEntry.TABLE_NAME,
                 values,
                 ToDoContract.TodoEntry._ID+"="+todo.id,
                 null);
+        db.close();
         //+"='false'"
     }
 }
