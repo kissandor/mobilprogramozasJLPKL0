@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.mobilprogramozasjlpkl0.R;
+import com.example.mobilprogramozasjlpkl0.SQLiteDatabaseHandler;
 
 import java.util.ArrayList;
 
-import Interfaces.IToDo;
 import data.ToDo;
 
 public class ToDoAdapter extends ArrayAdapter<ToDo> {
@@ -26,6 +26,10 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
         this.todos = todos;
     }
 
+    public void updateAdapter(ArrayList<ToDo> newlist) {
+        todos = newlist;
+        this.notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
@@ -52,10 +56,22 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
 
         CheckBox cBox = convertView.findViewById(R.id.checkbox_task);
         cBox.setChecked(todos.get(position).getCompleted());
+      /*  cBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final boolean isChecked = cBox.isChecked();
+                if(isChecked){
+                    SQLiteDatabaseHandler dbH = new SQLiteDatabaseHandler(getContext());
+                   /* dbH.updateTodo(todos.get(position));
+                    notifyDataSetChanged();
+                }
+            }
+        });*/
 
         TextView tView = convertView.findViewById(R.id.task);
         tView.setText(todos.get(position).getTodo());
 
         return convertView;
     }
+
 }

@@ -33,18 +33,17 @@ public class SQLiteDatabaseHandler {
         //should close the connection ???
         //TodoOpenHelper.close();
     }
-
     public ArrayList<ToDo> getAllTodos(){
 
         TodoOpenHelper helper = new TodoOpenHelper(_context);
         SQLiteDatabase db = helper.getWritableDatabase();
-
+/*
         String[] columns = {
                 ToDoContract.TodoEntry._ID,
                 ToDoContract.TodoEntry.COLUMN_NAME_TODO,
                 ToDoContract.TodoEntry.COLUMN_NAME_CHECKED
         };
-
+*/
         Cursor cursor = db.query(
                 false,
                 ToDoContract.TodoEntry.TABLE_NAME,
@@ -77,27 +76,26 @@ public class SQLiteDatabaseHandler {
             td.id = Math.toIntExact(_id);
             todos.add(td);
         }
-        /*
-        while(cursor.moveToNext()) {
-            int index;
-            index = cursor.getColumnIndexOrThrow("_id");
-            long _id = cursor.getLong(index);
-
-            index = cursor.getColumnIndexOrThrow(
-                    ToDoContract.TodoEntry.COLUMN_NAME_TODO);
-            String todo = cursor.getString(index);
-
-            index = cursor.getColumnIndexOrThrow(
-                    ToDoContract.TodoEntry.COLUMN_NAME_CHECKED);
-            boolean checked = Boolean.getBoolean(cursor.getString(index));
-
-            ToDo td = new ToDo(checked, todo);
-            td.id = Math.toIntExact(_id);
-            todos.add(td);
-        }
-        */
-
         cursor.close();
         return todos;
+    }
+    public void updateTodo(ToDo todo){
+        TodoOpenHelper helper = new TodoOpenHelper(_context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        String newValue = "csere";
+        String newChecked = "true";
+        ContentValues values = new ContentValues();
+        values.put(ToDoContract.TodoEntry._ID, todo.id);
+        values.put(ToDoContract.TodoEntry.COLUMN_NAME_TODO, newValue);
+        values.put(ToDoContract.TodoEntry.COLUMN_NAME_CHECKED, newChecked);
+
+
+        int update = db.update(
+                ToDoContract.TodoEntry.TABLE_NAME,
+                values,
+                ToDoContract.TodoEntry._ID+"="+todo.id,
+                null);
+        //+"='false'"
     }
 }
