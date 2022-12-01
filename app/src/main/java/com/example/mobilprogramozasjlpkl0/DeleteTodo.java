@@ -1,48 +1,46 @@
 package com.example.mobilprogramozasjlpkl0;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DeleteTodo} factory method to
- * create an instance of this fragment.
- */
-public class DeleteTodo extends Fragment {
+public class DeleteTodo extends AppCompatActivity {
 
     ImageView deleteYes;
     ImageView deleteNo;
 
-    public DeleteTodo() {
-        // Required empty public constructor
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+        setContentView(R.layout.activity_delete_todo);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.fragment_delete_todo, container, false);
+        Intent intent = getIntent();
+        int todoChecked = intent.getIntExtra("TodoChecked", -1);
 
-        deleteNo = (ImageView) view.findViewById(R.id.deleteNo);
-        deleteYes = (ImageView) view.findViewById(R.id.deleteYes);
+        deleteYes = findViewById(R.id.deleteYes);
+        deleteYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SQLiteDatabaseHandler db = new SQLiteDatabaseHandler(getApplicationContext());
+                db.deleteTodo(todoChecked);
+                Intent it = new Intent(DeleteTodo.this, MainActivity.class);
+                startActivity(it);
+                finish();
+            }
+        });
 
+        deleteNo = findViewById(R.id.deleteNo);
         deleteNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).showHideFragment();
+                Intent it = new Intent(DeleteTodo.this, MainActivity.class);
+                startActivity(it);
+                finish();
             }
         });
-       return view;
+
     }
 }

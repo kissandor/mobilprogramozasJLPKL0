@@ -82,6 +82,7 @@ public class SQLiteDatabaseHandler {
         cursor.close();
         return todos;
     }
+    /*
     public void updateTodo(ToDo todo){
         TodoOpenHelper helper = new TodoOpenHelper(_context);
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -101,5 +102,14 @@ public class SQLiteDatabaseHandler {
                 null);
         db.close();
         //+"='false'"
+    }*/
+
+    public void deleteTodo(int position) {
+        TodoOpenHelper helper = new TodoOpenHelper(_context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ArrayList<ToDo> todos = new ArrayList<>();
+        todos = getAllTodos();
+        db.delete(ToDoContract.TodoEntry.TABLE_NAME, ToDoContract.TodoEntry._ID+ "="+ position,null);
+        todos = getAllTodos();
     }
 }

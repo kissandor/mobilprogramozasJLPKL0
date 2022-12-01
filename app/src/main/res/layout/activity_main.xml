@@ -60,12 +60,4 @@
             app:layout_constraintBottom_toTopOf="parent"
             />
     </LinearLayout>
-    <fragment
-        android:id="@+id/todo_fragnent"
-        android:name="com.example.mobilprogramozasjlpkl0.DeleteTodo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="204dp" />
 </FrameLayout>

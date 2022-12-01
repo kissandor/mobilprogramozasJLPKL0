@@ -26,26 +26,26 @@
             android:textSize="42sp"
             android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="80dp"
-        android:textAlignment="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="80dp"
+            android:textAlignment="center">
 
-        <ImageView
-            android:id="@+id/deleteYes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            app:srcCompat="@drawable/icons8_ok" />
-        <ImageView
-            android:id="@+id/deleteNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            app:srcCompat="@drawable/icons8_cancel"/>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/deleteYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                app:srcCompat="@drawable/icons8_ok" />
+            <ImageView
+                android:id="@+id/deleteNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                app:srcCompat="@drawable/icons8_cancel"/>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

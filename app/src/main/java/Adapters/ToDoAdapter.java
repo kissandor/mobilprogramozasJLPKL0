@@ -11,16 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mobilprogramozasjlpkl0.DeleteTodo;
-import com.example.mobilprogramozasjlpkl0.MainActivity;
 import com.example.mobilprogramozasjlpkl0.R;
-import com.example.mobilprogramozasjlpkl0.SQLiteDatabaseHandler;
-import com.example.mobilprogramozasjlpkl0.StartPage;
 
 import java.util.ArrayList;
 
@@ -71,10 +65,12 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
             @Override
             public void onClick(View view) {
                 final boolean isChecked = cBox.isChecked();
-                if(isChecked && context instanceof MainActivity){
-                    ((MainActivity)context).showHideFragment();
+                if(isChecked){
+                    Intent intent = new Intent(context, DeleteTodo.class);
+                    intent.putExtra("TodoChecked", todos.get(position).id);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
-
             }
         });
         TextView tView = convertView.findViewById(R.id.task);

@@ -38,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
         //get todos from the database
         todos = dbHandler.getAllTodos();
 
-        fr = new DeleteTodo();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fr = (DeleteTodo) fragmentManager.findFragmentById(R.id.todo_fragnent);
-        showHideFragment();
-
-
         adapter = new ToDoAdapter(MainActivity.this, R.layout.list_item, todos);
         ListView listView = findViewById(R.id.messages);
         listView.setAdapter(adapter);
@@ -74,19 +68,5 @@ public class MainActivity extends AppCompatActivity {
         ToDo newTodo = new ToDo(completed, et.getText().toString());
         dbHandler.addTodo(newTodo);
         et.setText("");
-    }
-
-    //method to bring up the fragment
-    public void showHideFragment(){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-
-        if( fr.isHidden()){
-            ft.show(fr);
-        } else{
-            ft.hide(fr);
-        }
-        ft.commit();
     }
 }
