@@ -27,7 +27,9 @@
             android:layout_height="wrap_content"
             android:dividerHeight="10.0sp"
             android:divider="@color/main_background"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent" >
+
+        </ListView>
     </RelativeLayout>
 
     <LinearLayout
@@ -58,4 +60,12 @@
             app:layout_constraintBottom_toTopOf="parent"
             />
     </LinearLayout>
+    <fragment
+        android:id="@+id/todo_fragnent"
+        android:name="com.example.mobilprogramozasjlpkl0.DeleteTodo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="204dp" />
 </FrameLayout>

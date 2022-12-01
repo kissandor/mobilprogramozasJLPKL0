@@ -29,6 +29,7 @@ import data.ToDo;
 public class ToDoAdapter extends ArrayAdapter<ToDo> {
     private ArrayList<ToDo> todos;
     private Context context;
+    private FragmentManager fmanager;
 
     public ToDoAdapter(@NonNull Context context, int resource, ArrayList<ToDo> todos) {
         super(context, resource, todos);
@@ -70,21 +71,8 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
             @Override
             public void onClick(View view) {
                 final boolean isChecked = cBox.isChecked();
-                if(isChecked){
-                    /*
-                    SQLiteDatabaseHandler dbH = new SQLiteDatabaseHandler(getContext());
-                    dbH.updateTodo(todos.get(position));
-                    ToDoAdapter.this.notifyDataSetChanged();
-                     */
-                    Intent intent = new Intent(context, StartPage.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-
-                    DeleteTodo deleteTodo =  new DeleteTodo();
-                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    activity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentContainer, deleteTodo)
-                            .addToBackStack(null).commit();
+                if(isChecked && context instanceof MainActivity){
+                    ((MainActivity)context).showHideFragment();
                 }
 
             }
