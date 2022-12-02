@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -60,7 +61,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.info, menu);
+        return true;
+    }
+
     public  void updateScreen(){
         adapter.updateAdapter(todos);
     }
