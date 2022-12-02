@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    
     public  void updateScreen(){
         adapter.updateAdapter(todos);
     }
