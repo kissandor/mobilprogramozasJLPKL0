@@ -27,8 +27,7 @@
             android:layout_height="wrap_content"
             android:dividerHeight="10.0sp"
             android:divider="@color/main_background"
-            app:layout_constraintBottom_toBottomOf="parent" >
-
+            app:layout_constraintBottom_toBottomOf="parent">
         </ListView>
     </RelativeLayout>
 
@@ -66,4 +65,10 @@
                 />
         </LinearLayout>
     </RelativeLayout>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.mobilprogramozasjlpkl0.info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp" />
 </RelativeLayout>
