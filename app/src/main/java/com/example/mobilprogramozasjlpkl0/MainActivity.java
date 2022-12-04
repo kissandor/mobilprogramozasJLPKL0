@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     ToDoAdapter adapter;
     DeleteTodo fr;
     info infoFregment;
-    boolean clicked;
+    EditText updateToDoText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +54,24 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.messages);
         listView.setAdapter(adapter);
 
-        clicked = false;
+        updateToDoText = findViewById(R.id.input_update);
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //the text to updade
+                String todoText = adapter.getItem(i).getTodo();
+                int todoId = adapter.getItem(i).id;
+
+                Toast.makeText(MainActivity.this, String.valueOf(todoId), Toast.LENGTH_SHORT).show();
+
+                //sending the text to the fragment
+                Bundle bundle = new Bundle();
+                bundle.putString("textToUpdate", todoText);
+
                 Update updateFregment = new Update();
+                // set Fragmentclass Arguments
+                updateFregment.setArguments(bundle);
                 FragmentManager fr = getSupportFragmentManager();
                 FragmentTransaction ft = fr.beginTransaction();
                 ft.replace(R.id.fragmentContainerView, updateFregment);

@@ -82,34 +82,29 @@ public class SQLiteDatabaseHandler {
         cursor.close();
         return todos;
     }
-    /*
-    public void updateTodo(ToDo todo){
+
+    public void updateTodo(int todoId, String newTodoText ){
         TodoOpenHelper helper = new TodoOpenHelper(_context);
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        String newValue = "csere";
-        String newChecked = "true";
         ContentValues values = new ContentValues();
-        //values.put(ToDoContract.TodoEntry._ID, todo.id);
-        values.put(ToDoContract.TodoEntry.COLUMN_NAME_TODO, newValue);
-        values.put(ToDoContract.TodoEntry.COLUMN_NAME_CHECKED, newChecked);
+        values.put(ToDoContract.TodoEntry.COLUMN_NAME_TODO, newTodoText);
 
 
         db.update(
                 ToDoContract.TodoEntry.TABLE_NAME,
                 values,
-                ToDoContract.TodoEntry._ID+"="+todo.id,
+                ToDoContract.TodoEntry._ID+"="+todoId,
                 null);
         db.close();
-        //+"='false'"
-    }*/
+    }
 
-    public void deleteTodo(int position) {
+    public void deleteTodo(int todoId) {
         TodoOpenHelper helper = new TodoOpenHelper(_context);
         SQLiteDatabase db = helper.getWritableDatabase();
         ArrayList<ToDo> todos = new ArrayList<>();
         todos = getAllTodos();
-        db.delete(ToDoContract.TodoEntry.TABLE_NAME, ToDoContract.TodoEntry._ID+ "="+ position,null);
+        db.delete(ToDoContract.TodoEntry.TABLE_NAME, ToDoContract.TodoEntry._ID+ "="+ todoId,null);
         todos = getAllTodos();
     }
 }
