@@ -19,4 +19,11 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="delete">Delete?</string>
+    <string name="add_quick_text_here">Add quick text here</string>
+    <string name="developed_by">Developed by:</string>
+    <string name="sandor_kis">Sandor Kis</string>
+    <string name="jlpkl0">JLPKL0</string>
+    <string name="update_todo">update ToDo</string>
+    <string name="update">update</string>
 </resources>

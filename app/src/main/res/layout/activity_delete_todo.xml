@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="#1c3c80"
+    android:background="@color/main_background"
     tools:context=".DeleteTodo">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete?"
+            android:text="@string/delete"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="42sp"

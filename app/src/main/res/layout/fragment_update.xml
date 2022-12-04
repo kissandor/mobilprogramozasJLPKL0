@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/update_button"
-        android:hint="update ToDo"
+        android:hint="@string/update_todo"
         android:textSize="26sp"
-        android:textColor="#a8a8a8"/>
+        android:textColor="@color/text_color"/>
     <Button
         android:id="@+id/update_button"
         android:layout_width="wrap_content"
@@ -23,7 +23,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_margin="30dp"
-        android:text="update"
-
-        android:textColor="#a8a8a8"/>
+        android:text="@string/update"
+        android:textColor="@color/text_color"/>
 </RelativeLayout>

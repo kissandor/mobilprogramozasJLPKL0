@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class Update extends Fragment {
@@ -33,6 +34,8 @@ public class Update extends Fragment {
         View view = inflater.inflate(R.layout.fragment_update, container, false);
         //extracting the data from the main activity
         String textToUpdate = getArguments().getString("textToUpdate");
+        int todoId = getArguments().getInt("todoId");
+
         inputText = (EditText) view.findViewById(R.id.input_update);
         //EditText gets the data from activity
         inputText.setText(textToUpdate);
@@ -43,11 +46,19 @@ public class Update extends Fragment {
             public void onClick(View view) {
 
                 String newTodo = inputText.getText().toString();
-                SQLiteDatabaseHandler db = new SQLiteDatabaseHandler(getContext());
-                db.updateTodo(61,newTodo);
+                if(newTodo.length()>0){
+                    SQLiteDatabaseHandler db = new SQLiteDatabaseHandler(getContext());
+                    db.updateTodo(todoId,newTodo);
+                } else{
+                    Toast.makeText(getContext(), "Nothing ToDo?", Toast.LENGTH_SHORT).show();
+                }
 
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                /*
                 //closing the fragment.
                 ((MainActivity) getActivity()).showHideFragment(Update.this);
+                */
             }
         });
 

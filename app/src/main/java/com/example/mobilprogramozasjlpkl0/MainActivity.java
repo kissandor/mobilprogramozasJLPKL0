@@ -28,8 +28,6 @@ import data.ToDo;
 
 public class MainActivity extends AppCompatActivity {
 
-    //list to store the todos
-    // the idea is to store the todos in database
     ArrayList<ToDo> todos;
     ImageButton add;
     EditText data;
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.messages);
         listView.setAdapter(adapter);
 
-        updateToDoText = findViewById(R.id.input_update);
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -62,12 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 //the text to updade
                 String todoText = adapter.getItem(i).getTodo();
                 int todoId = adapter.getItem(i).id;
-
-                Toast.makeText(MainActivity.this, String.valueOf(todoId), Toast.LENGTH_SHORT).show();
-
                 //sending the text to the fragment
                 Bundle bundle = new Bundle();
                 bundle.putString("textToUpdate", todoText);
+                bundle.putInt("todoId", todoId);
 
                 Update updateFregment = new Update();
                 // set Fragmentclass Arguments
@@ -76,18 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction ft = fr.beginTransaction();
                 ft.replace(R.id.fragmentContainerView, updateFregment);
                 ft.commit();
-
                 //showHideFragment(updateFregment);
             }
         });
-
 
         //to make the fragmment hidden
         FragmentManager fragmentManager = getSupportFragmentManager();
         infoFregment = (info) fragmentManager.findFragmentById(R.id.fragmentContainerView);
         showHideFragment(infoFregment);
-
-
 
         add = findViewById(R.id.add_button);
         add.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
                     todos = dbHandler.getAllTodos();
                     updateScreen();
                 }
-
             }
         });
     }

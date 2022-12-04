@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Developed by: "
+        android:text="@string/developed_by"
         android:textSize="36sp"
-        android:textColor="#a8a8a8"
+        android:textColor="@color/text_color"
         android:layout_above="@id/textView_name"/>
     <TextView
         android:id="@+id/textView_name"
@@ -23,16 +23,16 @@
         android:layout_margin="50dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Sandor Kis"
+        android:text="@string/sandor_kis"
         android:textSize="26sp"
-        android:textColor="#a8a8a8"/>
+        android:textColor="@color/text_color"/>
     <TextView
         android:id="@+id/textView_neptun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="JLPKL0"
+        android:text="@string/jlpkl0"
         android:layout_below="@id/textView_name"
         android:textSize="15sp"
-        android:textColor="#a8a8a8"/>
+        android:textColor="@color/text_color"/>
 </RelativeLayout>

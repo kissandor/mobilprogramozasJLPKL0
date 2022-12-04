@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#4E6AA6"
+            android:background="@color/secondary_background"
             android:layout_margin="10dp"
             android:layout_gravity="bottom">
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
                 android:layout_gravity="bottom"
-                android:hint="Add quick text here" />
+                android:hint="@string/add_quick_text_here" />
 
             <ImageButton
                 android:id="@+id/add_button"
@@ -59,7 +59,7 @@
                 android:layout_weight="0.15"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_add_button_svgrepo_com"
-                android:textColor="#4E6AA6"
+                android:textColor="@color/secondary_background"
                 android:layout_gravity="bottom"
                 app:layout_constraintBottom_toTopOf="parent"
                 />
