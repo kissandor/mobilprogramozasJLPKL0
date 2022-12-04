@@ -1,19 +1,25 @@
 package com.example.mobilprogramozasjlpkl0;
 
+import static android.widget.AdapterView.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     ToDoAdapter adapter;
     DeleteTodo fr;
     info infoFregment;
+    boolean clicked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +53,22 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.messages);
         listView.setAdapter(adapter);
 
-        //to make the fragmment hidden
+        clicked = false;
+        listView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Update updateFregment = new Update();
+                FragmentManager fr = getSupportFragmentManager();
+                FragmentTransaction ft = fr.beginTransaction();
+                ft.replace(R.id.fragmentContainerView, updateFregment);
+                ft.commit();
 
+                //showHideFragment(updateFregment);
+            }
+        });
+
+
+        //to make the fragmment hidden
         FragmentManager fragmentManager = getSupportFragmentManager();
         infoFregment = (info) fragmentManager.findFragmentById(R.id.fragmentContainerView);
         showHideFragment(infoFregment);
@@ -79,8 +101,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        infoFregment = (info) fragmentManager.findFragmentById(R.id.fragmentContainerView);
+/*
+        info inf = new info();
+        FragmentManager fr = getSupportFragmentManager();
+        FragmentTransaction ft = fr.beginTransaction();
+        ft.replace(R.id.fragmentContainerView, inf);
+        ft.commit();
+*/
         showHideFragment(infoFregment);
         return true;
     }
@@ -99,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
     public void showHideFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.fragmentContainerView, fragment);
         ft.setCustomAnimations(android.R.anim.fade_in,
                 android.R.anim.fade_out);
 
@@ -107,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ft.hide(fragment);
         }
-
         ft.commit();
     }
 }

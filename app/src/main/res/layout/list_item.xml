@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/listview_style"
         android:gravity="fill_horizontal"
+        android:descendantFocusability="blocksDescendants"
         android:padding="10dp"
         android:orientation="vertical"
         android:weightSum="3">

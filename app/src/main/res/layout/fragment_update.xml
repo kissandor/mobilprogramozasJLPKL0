@@ -7,32 +7,23 @@
     android:background="@color/main_background"
     tools:context=".info">
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/input_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Developed by: "
-        android:textSize="36sp"
-        android:textColor="#a8a8a8"
-        android:layout_above="@id/textView_name"/>
-    <TextView
-        android:id="@+id/textView_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Sandor Kis"
+        android:layout_above="@id/update_button"
+        android:hint="update ToDo"
         android:textSize="26sp"
         android:textColor="#a8a8a8"/>
-    <TextView
-        android:id="@+id/textView_neptun"
+    <Button
+        android:id="@+id/update_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="JLPKL0"
-        android:layout_below="@id/textView_name"
-        android:textSize="15sp"
+        android:layout_centerVertical="true"
+        android:layout_margin="30dp"
+        android:text="update"
+
         android:textColor="#a8a8a8"/>
 </RelativeLayout>

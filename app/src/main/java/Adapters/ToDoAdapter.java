@@ -8,19 +8,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.mobilprogramozasjlpkl0.DeleteTodo;
+import com.example.mobilprogramozasjlpkl0.MainActivity;
 import com.example.mobilprogramozasjlpkl0.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import data.ToDo;
 
-public class ToDoAdapter extends ArrayAdapter<ToDo> {
+public class ToDoAdapter extends ArrayAdapter<ToDo>  {
     private ArrayList<ToDo> todos;
     private Context context;
     private FragmentManager fmanager;
@@ -52,6 +55,11 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
         return position;
     }
 
+    @Override
+    public boolean isEnabled(int position) {
+        return true;
+    }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -75,8 +83,6 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
         });
         TextView tView = convertView.findViewById(R.id.task);
         tView.setText(todos.get(position).getTodo());
-
         return convertView;
     }
-
 }
