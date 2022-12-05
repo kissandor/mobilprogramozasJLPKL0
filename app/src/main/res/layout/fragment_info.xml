@@ -22,9 +22,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_above="@id/textView_email"
         android:text="@string/sandor_kis"
         android:textSize="26sp"
+        android:textColor="@color/text_color"/>
+    <TextView
+        android:id="@+id/textView_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/kissanddor_hotmail_com"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"
         android:textColor="@color/text_color"/>
     <TextView
         android:id="@+id/textView_neptun"
@@ -32,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/jlpkl0"
-        android:layout_below="@id/textView_name"
+        android:layout_below="@id/textView_email"
         android:textSize="15sp"
         android:textColor="@color/text_color"/>
 </RelativeLayout>
